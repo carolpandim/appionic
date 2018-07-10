@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Lista de Clientes</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-item *ngFor="let item of listaContatos">
+    <ion-avatar item-start>
+      <img src="{{item.Img}}">
+    </ion-avatar>
+    <h2>{{item.Nome}}</h2>
+    <p>{{item.Empresa}}</p>
+    <button ion-button clear item-end (click)="openModal({charNum: 0})">Detalhe</button>
+  </ion-item>
+</ion-content>
