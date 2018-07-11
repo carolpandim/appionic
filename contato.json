@@ -5,35 +5,105 @@
             "Nome": "Carol",
             "Telefone": "3254-2200",
             "Empresa": "Hubfintech",
-            "Img": "../assets/imgs/carol.jpg"
+            "Img": "../assets/imgs/carol.jpg",
+            "Produtos": [
+                {
+                    "Nome": "Race",
+                    "Descricao": "Hobbit"
+                },
+                {
+                    "Nome": "Culture",
+                    "Descricao": "River Folk"
+                },
+                {
+                    "Nome": "Alter Ego",
+                    "Descricao": "Smeagol"
+                }
+            ]
         },
         {
             "Id": 2,
             "Nome": "Rodrigo",
             "Telefone": "2705-9087",
             "Empresa": "R&C Engenharia",
-            "Img": "../assets/imgs/rodrigo.jpg"
+            "Img": "../assets/imgs/rodrigo.jpg",
+            "Produtos": [
+                {
+                    "Nome": "Race",
+                    "Descricao": "Hobbit"
+                },
+                {
+                    "Nome": "Culture",
+                    "Descricao": "Shire Folk"
+                },
+                {
+                    "Nome": "Weapon",
+                    "Descricao": "Sting"
+                }
+            ]
         },
         {
             "Id": 3,
             "Nome": "Deyse",
             "Telefone": "991521044",
             "Empresa": "Pousada RP",
-            "Img": "../assets/imgs/deyse.jpg"
+            "Img": "../assets/imgs/deyse.jpg",
+            "Produtos": [
+                {
+                    "Nome": "Race",
+                    "Descricao": "Hobbit"
+                },
+                {
+                    "Nome": "Culture",
+                    "Descricao": "Shire Folk"
+                },
+                {
+                    "Nome": "Nickname",
+                    "Descricao": "Sam"
+                }
+            ]
         },
         {
             "Id": 4,
             "Nome": "Leticia",
             "Telefone": "97205-5122",
             "Empresa": "Consultoria RH",
-            "Img": "../assets/imgs/leticia.jpg"
+            "Img": "../assets/imgs/leticia.jpg",
+            "Produtos": [
+                {
+                    "Nome": "Race",
+                    "Descricao": "Hobbit"
+                },
+                {
+                    "Nome": "Culture",
+                    "Descricao": "Shire Folk"
+                },
+                {
+                    "Nome": "Nickname",
+                    "Descricao": "Sam"
+                }
+            ]
         },
         {
             "Id": 5,
             "Nome": "Mariana",
             "Telefone": "2253-5151",
             "Empresa": "Escola São José",
-            "Img": "../assets/imgs/mariana.jpg"
+            "Img": "../assets/imgs/mariana.jpg",
+            "Produtos": [
+                {
+                    "Nome": "Race",
+                    "Descricao": "Hobbit"
+                },
+                {
+                    "Nome": "Culture",
+                    "Descricao": "Shire Folk"
+                },
+                {
+                    "Nome": "Nickname",
+                    "Descricao": "Sam"
+                }
+            ]
         }
     ]
 }

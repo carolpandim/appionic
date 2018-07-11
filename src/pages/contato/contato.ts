@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController  } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 import { ModalContatoPage } from '../modalcontato/modalcontato';
 
@@ -9,24 +9,23 @@ import { ModalContatoPage } from '../modalcontato/modalcontato';
 })
 
 export class ContatoPage {
-  listaContatos = [];
+  public listaContatos = [];
 
-  constructor(public navCtrl: NavController, 
-    public navParams: NavParams, 
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
     private service: RemoteServiceProvider,
     public modalCtrl: ModalController) {
     this.getContatos();
-    
+
   }
 
-  getContatos(): void {
+  getContatos() {
     this.service.getContatos()
-      .subscribe(data => this.listaContatos = data);
+      .then(data => this.listaContatos = data)
   }
 
-  openModal(characterNum) {
-    console.log(characterNum)
-    let modal = this.modalCtrl.create(ModalContatoPage, characterNum);
+  openModal(Id) {
+    let modal = this.modalCtrl.create(ModalContatoPage, {Id:Id});
     modal.present();
   }
 }

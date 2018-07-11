@@ -15,6 +15,6 @@
     </ion-avatar>
     <h2>{{item.Nome}}</h2>
     <p>{{item.Empresa}}</p>
-    <button ion-button clear item-end (click)="openModal({charNum: 0})">Detalhe</button>
+    <button ion-button clear item-end (click)="openModal(item.Id)">Detalhe</button>
   </ion-item>
 </ion-content>

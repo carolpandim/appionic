@@ -1,7 +1,7 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-title>
-      Description
+      Informações do Cliente
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
@@ -14,19 +14,52 @@
 
 <ion-content>
   <ion-list>
-    <ion-item>
+    <ion-item *ngIf="contato">
       <ion-avatar item-start>
-        <img src="{{character.image}}">
+        <img src="{{contato.Img}}">
       </ion-avatar>
-      <h2>{{character.name}}</h2>
-      <p>{{character.quote}}</p>
+      <h2>{{contato.Nome}}</h2>
+      <p>{{contato.Empresa}}</p>
+      <p>{{contato.Telefone}}</p>
     </ion-item>
-
-    <ion-item *ngFor="let item of character['items']">
-      {{item.title}}
-      <ion-note item-end>
-        {{item.note}}
-      </ion-note>
-    </ion-item>
+    <ion-list *ngIf="produtos">
+      <ion-item *ngFor="let item of produtos[0]">
+        {{item.Nome}}
+        <ion-note item-end>
+          {{item.Descricao}}
+        </ion-note>
+      </ion-item>
+    </ion-list>
   </ion-list>
+</ion-content> -->
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Informações do Cliente</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="contato">
+    <img src="{{contato.Img}}"  />
+    <ion-card-content>
+      <ion-card-title>
+        <b>{{contato.Nome}}</b>
+      </ion-card-title>
+      <p>{{contato.Empresa}}</p>
+      <p>{{contato.Telefone}}</p>
+      <br>
+      <h2><b>Lista de Produtos Contratados</b></h2>
+    </ion-card-content>
+    <ion-list *ngIf="produtos">
+      <ion-item *ngFor="let item of produtos[0]">
+        <ion-avatar item-start>
+          <img src="{{contato.Img}}">
+        </ion-avatar>
+        {{item.Nome}}
+        <ion-badge item-end>{{item.Descricao}}</ion-badge>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
 </ion-content>
