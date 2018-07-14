@@ -1,20 +1,35 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+  <ion-toolbar>
+    <ion-buttons left>
+      <button ion-button icon-only color="royal" menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>Lista de Clientes</ion-title>
-  </ion-navbar>
+    <ion-buttons right>
+      <button ion-button icon-only color="royal" (click)="createEditModal(0)">
+        <ion-icon name="person-add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 
 <ion-content>
-  <ion-item *ngFor="let item of listaContatos">
+  <ion-item *ngFor="let item of allContatos">
     <ion-avatar item-start>
       <img src="{{item.Img}}">
     </ion-avatar>
     <h2>{{item.Nome}}</h2>
     <p>{{item.Empresa}}</p>
-    <button ion-button clear item-end (click)="openModal(item.Id)">Detalhe</button>
+    <button ion-button clear item-end (click)="openModal(item.Id)">
+      <ion-icon name="paper"></ion-icon>
+    </button>
+    <button ion-button clear item-end (click)="openModal(item.Id)">
+      <ion-icon name="create"></ion-icon>
+    </button>
+    <button ion-button clear item-end (click)="openModal(item.Id)">
+      <ion-icon name="trash"></ion-icon>
+    </button>
   </ion-item>
 </ion-content>

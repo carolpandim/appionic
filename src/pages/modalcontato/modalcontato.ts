@@ -10,7 +10,7 @@ import { Produto } from '../../models/produto'
 })
 
 export class ModalContatoPage {
-  public Id: any;
+  public contatoId: any;
   public obg: any;
   public pdt: any;
   public contato: Contato;
@@ -18,10 +18,11 @@ export class ModalContatoPage {
   public produtos: Produto[];
 
   constructor(public platform: Platform, public params: NavParams, public viewCtrl: ViewController, private service: RemoteServiceProvider) {
-    this.Id = Number(params.get("Id"));
-    console.log("passei aqui" + this.Id);
+    this.contatoId = params.get("Id");
+    console.log("ModalContatoPage passei aqui" + this.contatoId);
 
-    this.service.getContatoById(this.Id).then(data => {
+    this.service.getContatoById(this.contatoId)
+    .subscribe(data => {
       this.obg = data;
       this.produtos = this.obg.map(o => o.Produtos);
       console.log(this.produtos)
@@ -37,7 +38,7 @@ export class ModalContatoPage {
       //}
 
       this.contato = new Contato(
-        Number(this.obg.map(o => o.Id)), 
+        String(this.obg.map(o => o.Id)), 
         String(this.obg.map(o => o.Nome)), 
         String(this.obg.map(o => o.Telefone)), 
         String(this.obg.map(o => o.Empresa)), 

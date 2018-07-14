@@ -2,7 +2,7 @@ import {Produto} from './produto'
 
 export class Contato {
     constructor(
-        public Id: Number,
+        public Id: String,
         public Nome: String,
         public Telefone?: String,
         public Empresa?: String,

@@ -7,11 +7,14 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { ContatoPage } from '../pages/contato/contato'
 import { ModalContatoPage } from '../pages/modalcontato/modalcontato'
+import { ModalCreateContatoPage } from '../pages/modalcreatecontato/modalcreatecontato'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RemoteServiceProvider } from '../providers/remote-service/remote-service';
 import { HttpModule} from '@angular/http';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -19,12 +22,14 @@ import { HttpModule} from '@angular/http';
     HomePage,
     ListPage,
     ContatoPage,
-    ModalContatoPage
+    ModalContatoPage,
+    ModalCreateContatoPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    ReactiveFormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -32,7 +37,7 @@ import { HttpModule} from '@angular/http';
     HomePage,
     ListPage,
     ContatoPage,
-    ModalContatoPage
+    ModalContatoPage,ModalCreateContatoPage
   ],
   providers: [
     StatusBar,
