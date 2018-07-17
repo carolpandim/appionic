@@ -30,11 +30,11 @@ export class RemoteServiceProvider {
   }
   //Fetch Contato by id
   getContatoById(Id: string): Observable<Contato> {
-    console.log("Funciona porra!!!")
+    console.log("Funciona porra Id!!!" + Id)
     let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: cpHeaders });
     console.log(this.contatoUrl + "?Id=" + Id);
-    return this.http.get(this.contatoUrl + "?Id=" + Id)
+    return this.http.get("http://localhost:3000/contatos?Id=1")
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -42,10 +42,33 @@ export class RemoteServiceProvider {
   updateContato(Contato: Contato): Observable<number> {
     let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: cpHeaders });
-    return this.http.put(this.contatoUrl + "?Id=" + Contato.Id, Contato, options)
+    let json = JSON.stringify(
+      {
+        Id: Contato.Id,
+        Nome: Contato.Nome,
+        Empresa: Contato.Empresa,
+        Telefone: Contato.Telefone,
+        Img: Contato.Img,
+        Produtos: Contato.Produtos
+      });
+    return this.http.put("http://localhost:3000/contatos", json, options)
       .map(success => success.status)
       .catch(this.handleError);
+
+    // console.log("updatecontato: "+ Contato.Telefone)
+    // let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
+    // let options = new RequestOptions({ headers: cpHeaders });
+    // return this.http.put("http://localhost:3000/contatos?Id=1", Contato, options)
+    // // return this.http.put(this.contatoUrl + "?Id=" + Contato.Id + 
+    // //                                       "&Nome=" + Contato.Nome +
+    // //                                       "&Empresa=" + Contato.Empresa +
+    // //                                       "&Telefone=" + Contato.Telefone +
+    // //                                       "&Img=" + Contato.Img 
+    // //                                       ,Contato, options)
+    //   .map(success => success.status)
+    //   .catch(this.handleError);
   }
+
   //Delete Contato	
   deleteContatoById(Id: string): Observable<number> {
     let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
@@ -54,54 +77,14 @@ export class RemoteServiceProvider {
       .map(success => success.status)
       .catch(this.handleError);
   }
+
   private extractData(res: Response) {
     let body = res.json();
     return body;
   }
+
   private handleError(error: Response | any) {
     console.error(error.message || error);
     return Observable.throw(error.status);
   }
 }
-
-// import { HttpClient } from '@angular/common/http';
-// import { Injectable } from '@angular/core';
-// import { Http, Response } from '@angular/http';
-// import 'rxjs/add/operator/map';
-
-// @Injectable()
-// export class RemoteServiceProvider {
-
-//   data: any;
-//   url: string = "http://localhost:3000/contatos";
-//   constructor(public http: Http) { }
-
-//   getContatos() {
-//     if (this.data) {
-//       return Promise.resolve(this.data);
-//     }
-
-//     return new Promise(resolve => {
-//       this.http
-//         .get(this.url)
-//         .map(res => res.json())
-//         .subscribe(data => {
-//           this.data = data;
-//           resolve(this.data);
-//         });
-//     });
-
-//   }
-
-//   getContatoById(Id) {
-//     return new Promise(resolve => {
-//       this.http
-//         .get('http://localhost:3000/contatos?Id='+ Id)
-//         .map(res => res.json())
-//         .subscribe(data => {
-//           this.data = data;          
-//           resolve(this.data);
-//         });
-//     });
-//   }
-// }
