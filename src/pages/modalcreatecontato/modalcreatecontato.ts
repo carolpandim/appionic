@@ -1,15 +1,8 @@
 import { NavController, NavParams, ModalController,ViewController } from 'ionic-angular';
-
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ModalContatoPage } from '../modalcontato/modalcontato';
-
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 import { Contato } from '../../models/contato';
-import { Produto } from "../../models/produto"
-// import { ModalCreateContatoPage } from "../modalcreatecontato/modalcreatecontato"
-// import { AlertController } from 'ionic-angular';
-
 
 @Component({
   selector: 'page-modalcreatecontato',
@@ -20,7 +13,7 @@ export class ModalCreateContatoPage implements OnInit {
   public contatoId: any;
   public obg: any;
   public contato: Contato;
-
+ 
   //Component properties
   statusCode: number;
   requestProcessing = false;
@@ -29,12 +22,11 @@ export class ModalCreateContatoPage implements OnInit {
 
   //Create form
   contatoForm = new FormGroup({
-    Id: new FormControl('', Validators.required),
-    Nome: new FormControl('', Validators.required),
-    Telefone: new FormControl('', Validators.required),
-    Empresa: new FormControl('', Validators.required),
-    Img: new FormControl('', Validators.required),
-    Produtos: new FormControl([])
+    id: new FormControl(''),
+    nome: new FormControl('', Validators.required),
+    telefone: new FormControl('', Validators.required),
+    empresa: new FormControl('', Validators.required),
+    img: new FormControl('', Validators.required)
   });
   //Create constructor to get service instance
   constructor(
@@ -44,9 +36,8 @@ export class ModalCreateContatoPage implements OnInit {
     public modalCtrl: ModalController,
     public viewCtrl: ViewController
   ) {
-    this.contatoId = navParams.get("Id");
+    this.contatoId = navParams.get("id");
   }
-
 
   //Create ngOnInit() and and load contatos
   ngOnInit(): void {
@@ -57,20 +48,19 @@ export class ModalCreateContatoPage implements OnInit {
   }
 
   //Load contato by id to edit
-  loadContatoToEdit(contatoId: string) {
+  loadContatoToEdit(contatoId: Number) {
     console.log("cheguei no loadContatoToEdit contatoId: " + contatoId)
     this.preProcessConfigurations();
     this.contatoService.getContatoById(contatoId)
       .subscribe(data => {
         this.obg = data;
-        this.contatoIdToUpdate = this.obg.map(o => o.Id)
+        this.contatoIdToUpdate = this.obg.map(o => o.id)
         this.contatoForm.setValue({
-          Id: String(this.obg.map(o => o.Id)),
-          Nome: String(this.obg.map(o => o.Nome)),
-          Empresa: String(this.obg.map(o => o.Empresa)),
-          Telefone: String(this.obg.map(o => o.Telefone)),
-          Img: String(this.obg.map(o => o.Img)),
-          Produtos: this.obg.map(o => o.Produtos)
+          id: this.obg.map(o => o.id),
+          nome: String(this.obg.map(o => o.nome)),
+          empresa: String(this.obg.map(o => o.empresa)),
+          telefone: String(this.obg.map(o => o.telefone)),
+          img: String(this.obg.map(o => o.img))
         });
         this.processValidation = true;
         this.requestProcessing = false;
@@ -83,13 +73,17 @@ export class ModalCreateContatoPage implements OnInit {
   }
   //Handle create and update contato
   onContatoFormSubmit() {
+    console.log("Entrei")
     this.processValidation = true;
+    console.log("this.contatoForm.invalid: " + this.contatoForm.invalid)
     if (this.contatoForm.invalid) {
       return; //Validation failed, exit from method.
     }
     //Form is valid, now perform create or update
     this.preProcessConfigurations();
     let contato = this.contatoForm.value;
+    console.log("contatoForm que foi capturado: " + contato)
+    console.log("this.contatoIdToUpdate: " + this.contatoIdToUpdate)
     if (this.contatoIdToUpdate === null) {
       //Generate contato id then create contato
       this.contatoService.getAllContatos()
@@ -98,14 +92,14 @@ export class ModalCreateContatoPage implements OnInit {
           //Generate contato id	 
           let maxIndex = contatos.length - 1;
           let contatoWithMaxIndex = contatos[maxIndex];
-          let contatoId = Number(contatoWithMaxIndex.Id) + 1;
+          let contatoId = Number(contatoWithMaxIndex.id) + 1;
           contato.id = contatoId;
+          console.log("contato.id NOVO" + contato.id)
 
           //Create contato
           this.contatoService.createContato(contato)
             .subscribe(successCode => {
               this.statusCode = successCode;
-              //  this.getAllContatos();
               this.backToCreateContato();
             },
               errorCode => this.statusCode = errorCode
@@ -113,19 +107,15 @@ export class ModalCreateContatoPage implements OnInit {
         });
     } else {
       //Handle update contato
-      contato.Id = this.contatoIdToUpdate;
+      contato.id = this.contatoIdToUpdate;
       this.contatoService.updateContato(contato)
         .subscribe(successCode => {
           this.statusCode = successCode;
-          // this.getAllContatos();
           this.backToCreateContato();
         },
           errorCode => this.statusCode = errorCode);
     }
   }
-
-
-
 
   //Perform preliminary processing configurations
   preProcessConfigurations() {

@@ -6,7 +6,6 @@ import { ModalContatoPage } from '../modalcontato/modalcontato';
 
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 import { Contato } from '../../models/contato';
-import { Produto } from "../../models/produto"
 import { ModalCreateContatoPage } from "../modalcreatecontato/modalcreatecontato"
 import { AlertController } from 'ionic-angular';
 
@@ -23,20 +22,12 @@ export class ContatoPage implements OnInit {
   contatoIdToUpdate = null;
   processValidation = false;
 
-  public Id: Number
-  public Nome: String
-  public Telefone?: String
-  public Empresa?: String
-  public Img?: String
-  public Produtos?: Produto[]
   //Create form
   contatoForm = new FormGroup({
     Nome: new FormControl('', Validators.required),
     Telefone: new FormControl('', Validators.required),
     Empresa: new FormControl('', Validators.required),
-    Img: new FormControl('', Validators.required),
-    Produtos: new FormControl([], Validators.required
-    )
+    Img: new FormControl('', Validators.required)
   });
   //Create constructor to get service instance
   constructor(
@@ -45,9 +36,8 @@ export class ContatoPage implements OnInit {
     public navParams: NavParams,
     public modalCtrl: ModalController,
     public alertCtrl: AlertController
-) {
+  ) {
   }
-  
 
   //Create ngOnInit() and and load contatos
   ngOnInit(): void {
@@ -61,15 +51,40 @@ export class ContatoPage implements OnInit {
         data => this.allContatos = data,
         errorCode => this.statusCode = errorCode);
   }
-  
-  openModal(Id) {
-    let modal = this.modalCtrl.create(ModalContatoPage, { Id: Id });
+
+  //Delete contato
+  deleteContato(contatoId: Number) {
+    this.preProcessConfigurations();
+    this.contatoService.deleteContatoById(contatoId)
+      .subscribe(successCode => {
+        //this.statusCode = successCode;
+        //Expecting success code 204 from server
+        this.statusCode = 204;
+        this.getAllContatos();
+      },
+        errorCode => this.statusCode = errorCode);
+  }
+
+  openModal(id) {
+    let modal = this.modalCtrl.create(ModalContatoPage, { id: id });
+    modal.onDidDismiss(() => {
+      this.getAllContatos();
+    });
     modal.present();
   }
 
-  createEditModal(Id) {
-    let modal = this.modalCtrl.create(ModalCreateContatoPage, { Id: Id });
+  createEditModal(id) {
+    let modal = this.modalCtrl.create(ModalCreateContatoPage, { id: id });
+    modal.onDidDismiss(() => {
+      this.getAllContatos();
+    });
     modal.present();
   }
- 
+
+    //Perform preliminary processing configurations
+    preProcessConfigurations() {
+      this.statusCode = null;
+      this.requestProcessing = true;
+    }
+
 }

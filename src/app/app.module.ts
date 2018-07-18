@@ -4,7 +4,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { ContatoPage } from '../pages/contato/contato'
 import { ModalContatoPage } from '../pages/modalcontato/modalcontato'
 import { ModalCreateContatoPage } from '../pages/modalcreatecontato/modalcreatecontato'
@@ -20,7 +19,6 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
     ContatoPage,
     ModalContatoPage,
     ModalCreateContatoPage
@@ -35,9 +33,9 @@ import { ReactiveFormsModule } from '@angular/forms';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
     ContatoPage,
-    ModalContatoPage,ModalCreateContatoPage
+    ModalContatoPage,
+    ModalCreateContatoPage
   ],
   providers: [
     StatusBar,

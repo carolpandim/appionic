@@ -1,124 +1,46 @@
 {
   "contatos": [
     {
-      "Id": 1,
-      "Nome": "Carol",
-      "Telefone": "3254-2200",
-      "Empresa": "Hubfintech",
-      "Img": "../assets/imgs/carol.jpg",
-      "Produtos": [
-        {
-          "Id": 1,
-          "Nome": "Race",
-          "Descricao": "Hobbit"
-        },
-        {
-          "Id": 2,
-          "Nome": "Culture",
-          "Descricao": "River Folk"
-        },
-        {
-          "Id": 3,
-          "Nome": "Alter Ego",
-          "Descricao": "Smeagol"
-        }
-      ]
+      "id": 1,
+      "nome": "Carol",
+      "telefone": "3254-2207",
+      "empresa": "Hubfintech",
+      "img": "../assets/imgs/carol.jpg"
     },
     {
-      "Id": 2,
-      "Nome": "Rodrigo",
-      "Telefone": "2705-9087",
-      "Empresa": "R&C Engenharia",
-      "Img": "../assets/imgs/rodrigo.jpg",
-      "Produtos": [
-        {
-          "Id": 1,
-          "Nome": "Race",
-          "Descricao": "Hobbit"
-        },
-        {
-          "Id": 2,
-          "Nome": "Culture",
-          "Descricao": "Shire Folk"
-        },
-        {
-          "Id": 3,
-          "Nome": "Weapon",
-          "Descricao": "Sting"
-        }
-      ]
+      "id": 2,
+      "nome": "Rodrigo",
+      "telefone": "2705-9089",
+      "empresa": "R&C Engenharia",
+      "img": "../assets/imgs/rodrigo.jpg"
     },
     {
-      "Id": 3,
-      "Nome": "Deyse",
-      "Telefone": "991521044",
-      "Empresa": "Pousada RP",
-      "Img": "../assets/imgs/deyse.jpg",
-      "Produtos": [
-        {
-          "Id": 1,
-          "Nome": "Race",
-          "Descricao": "Hobbit"
-        },
-        {
-          "Id": 2,
-          "Nome": "Culture",
-          "Descricao": "Shire Folk"
-        },
-        {
-          "Id": 3,
-          "Nome": "Nickname",
-          "Descricao": "Sam"
-        }
-      ]
+      "id": 3,
+      "nome": "Deyse",
+      "telefone": "991521044",
+      "empresa": "Pousada RP",
+      "img": "../assets/imgs/deyse.jpg"
     },
     {
-      "Id": 4,
-      "Nome": "Leticia",
-      "Telefone": "97205-5122",
-      "Empresa": "Consultoria RH",
-      "Img": "../assets/imgs/leticia.jpg",
-      "Produtos": [
-        {
-          "Id": 1,
-          "Nome": "Race",
-          "Descricao": "Hobbit"
-        },
-        {
-          "Id": 2,
-          "Nome": "Culture",
-          "Descricao": "Shire Folk"
-        },
-        {
-          "Id": 3,
-          "Nome": "Nickname",
-          "Descricao": "Sam"
-        }
-      ]
+      "id": 4,
+      "nome": "Leticia",
+      "telefone": "97205-5122",
+      "empresa": "Consultoria RH",
+      "img": "../assets/imgs/leticia.jpg"
     },
     {
-      "Id": 5,
-      "Nome": "Mariana",
-      "Telefone": "2253-5151",
-      "Empresa": "Escola São José",
-      "Img": "../assets/imgs/mariana.jpg",
-      "Produtos": [
-        {
-          "Id": 1,
-          "Nome": "Race",
-          "Descricao": "Hobbit"
-        },
-        {
-          "Id": 2,
-          "Nome": "Culture",
-          "Descricao": "Shire Folk"
-        },
-        {
-          "Id": 3,
-          "Nome": "Nickname",
-          "Descricao": "Sam"
-        }
-      ]
+      "id": 5,
+      "nome": "Mariana",
+      "telefone": "2253-5151",
+      "empresa": "Escola São José",
+      "img": "../assets/imgs/mariana.jpg"
+    },
+    {
+      "id": 6,
+      "nome": "Wagner",
+      "telefone": "1234567",
+      "empresa": "Einstein",
+      "img": "../assets/imgs/wagner.jpg"
     }
   ]
 }

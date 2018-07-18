@@ -13,6 +13,7 @@ export class RemoteServiceProvider {
   //Create constructor to get Http instance
   constructor(private http: Http) {
   }
+
   //Fetch all Contatos
   getAllContatos(): Observable<Contato[]> {
     return this.http.get(this.contatoUrl)
@@ -20,60 +21,42 @@ export class RemoteServiceProvider {
       .catch(this.handleError);
 
   }
+
   //Create Contato
-  createContato(Contato: Contato): Observable<number> {
+  createContato(contato: Contato): Observable<number> {
     let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: cpHeaders });
-    return this.http.post(this.contatoUrl, Contato, options)
+    let body = JSON.stringify(contato);
+    console.log("body: " + body)
+    return this.http.post(this.contatoUrl, body, options)
       .map(success => success.status)
       .catch(this.handleError);
   }
+
   //Fetch Contato by id
-  getContatoById(Id: string): Observable<Contato> {
-    console.log("Funciona porra Id!!!" + Id)
+  getContatoById(id: Number): Observable<Contato> {
     let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: cpHeaders });
-    console.log(this.contatoUrl + "?Id=" + Id);
-    return this.http.get("http://localhost:3000/contatos?Id=1")
+    return this.http.get(this.contatoUrl + "?id=" + id)
       .map(this.extractData)
       .catch(this.handleError);
   }
+
   //Update Contato
-  updateContato(Contato: Contato): Observable<number> {
+  updateContato(contato: Contato): Observable<number> {
     let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: cpHeaders });
-    let json = JSON.stringify(
-      {
-        Id: Contato.Id,
-        Nome: Contato.Nome,
-        Empresa: Contato.Empresa,
-        Telefone: Contato.Telefone,
-        Img: Contato.Img,
-        Produtos: Contato.Produtos
-      });
-    return this.http.put("http://localhost:3000/contatos", json, options)
+    let body = JSON.stringify(contato);
+    return this.http.put(this.contatoUrl + "/" + contato.id, body, options)
       .map(success => success.status)
       .catch(this.handleError);
-
-    // console.log("updatecontato: "+ Contato.Telefone)
-    // let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
-    // let options = new RequestOptions({ headers: cpHeaders });
-    // return this.http.put("http://localhost:3000/contatos?Id=1", Contato, options)
-    // // return this.http.put(this.contatoUrl + "?Id=" + Contato.Id + 
-    // //                                       "&Nome=" + Contato.Nome +
-    // //                                       "&Empresa=" + Contato.Empresa +
-    // //                                       "&Telefone=" + Contato.Telefone +
-    // //                                       "&Img=" + Contato.Img 
-    // //                                       ,Contato, options)
-    //   .map(success => success.status)
-    //   .catch(this.handleError);
   }
 
   //Delete Contato	
-  deleteContatoById(Id: string): Observable<number> {
+  deleteContatoById(id: Number): Observable<Contato> {
     let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: cpHeaders });
-    return this.http.delete(this.contatoUrl + "?Id=" + Id)
+    return this.http.delete(this.contatoUrl + "/" + id)
       .map(success => success.status)
       .catch(this.handleError);
   }

@@ -12,27 +12,14 @@
 
 <ion-content>
   <ion-card *ngIf="contato">
-    <img src="{{contato.Img}}" />
+    <img src="{{contato.img}}" />
     <ion-card-content>
       <ion-card-title>
-        <b>{{contato.Nome}}</b>
+        <b>{{contato.nome}}</b>
       </ion-card-title>
-      <p>{{contato.Empresa}}</p>
-      <p>{{contato.Telefone}}</p>
-      <br>
-      <h2>
-        <b>Lista de Produtos Contratados</b>
-      </h2>
+      <p>{{contato.empresa}}</p>
+      <p>{{contato.telefone}}</p>
     </ion-card-content>
-    <ion-list *ngIf="produtos">
-      <ion-item *ngFor="let item of produtos[0]">
-        <ion-avatar item-start>
-          <img src="{{contato.Img}}">
-        </ion-avatar>
-        {{item.Nome}}
-        <ion-badge item-end>{{item.Descricao}}</ion-badge>
-      </ion-item>
-    </ion-list>
   </ion-card>
 
 </ion-content>

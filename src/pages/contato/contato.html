@@ -7,7 +7,7 @@
     </ion-buttons>
     <ion-title>Lista de Clientes</ion-title>
     <ion-buttons right>
-      <button ion-button icon-only color="royal" (click)="createEditModal(1)">
+      <button ion-button icon-only color="royal" (click)="createEditModal(0)">
         <ion-icon name="person-add"></ion-icon>
       </button>
     </ion-buttons>
@@ -16,20 +16,22 @@
 
 
 <ion-content>
-  <ion-item *ngFor="let item of allContatos">
-    <ion-avatar item-start>
-      <img src="{{item.Img}}">
-    </ion-avatar>
-    <h2>{{item.Nome}}</h2>
-    <p>{{item.Empresa}}</p>
-    <button ion-button clear item-end (click)="openModal(item.Id)">
-      <ion-icon name="paper"></ion-icon>
-    </button>
-    <button ion-button clear item-end (click)="openModal(item.Id)">
-      <ion-icon name="create"></ion-icon>
-    </button>
-    <button ion-button clear item-end (click)="openModal(item.Id)">
-      <ion-icon name="trash"></ion-icon>
-    </button>
-  </ion-item>
+  <ion-list>
+    <ion-item *ngFor="let item of allContatos">
+      <ion-avatar item-start>
+        <img src="{{item.img}}">
+      </ion-avatar>
+      <h2>{{item.nome}}</h2>
+      <p>{{item.empresa}}</p>
+      <button ion-button clear item-end (click)="openModal(item.id)">
+        <ion-icon name="paper"></ion-icon>
+      </button>
+      <button ion-button clear item-end (click)="createEditModal(item.id)">
+        <ion-icon name="create"></ion-icon>
+      </button>
+      <button ion-button clear item-end (click)="deleteContato(item.id)">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
 </ion-content>
