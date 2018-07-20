@@ -42,5 +42,19 @@
       "empresa": "Einstein",
       "img": "../assets/imgs/wagner.jpg"
     }
+  ],
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Meia Lupo",
+      "descricao": "Meia cano curto feminina branca.",
+      "img": "../assets/imgs/carol.jpg"
+    },
+    {
+      "id": 2,
+      "nome": "Calça Lycra Lupo",
+      "descricao": "Calça de lycra preta feminina",
+      "img": "../assets/imgs/carol.jpg"
+    }
   ]
 }

@@ -1,12 +1,10 @@
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalContatoPage } from '../modalcontato/modalcontato';
 
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 import { Contato } from '../../models/contato';
-import { ModalCreateContatoPage } from "../modalcreatecontato/modalcreatecontato"
 import { AlertController } from 'ionic-angular';
 
 @Component({
@@ -22,13 +20,6 @@ export class ContatoPage implements OnInit {
   contatoIdToUpdate = null;
   processValidation = false;
 
-  //Create form
-  contatoForm = new FormGroup({
-    Nome: new FormControl('', Validators.required),
-    Telefone: new FormControl('', Validators.required),
-    Empresa: new FormControl('', Validators.required),
-    Img: new FormControl('', Validators.required)
-  });
   //Create constructor to get service instance
   constructor(
     private contatoService: RemoteServiceProvider,
@@ -73,13 +64,6 @@ export class ContatoPage implements OnInit {
     modal.present();
   }
 
-  createEditModal(id) {
-    let modal = this.modalCtrl.create(ModalCreateContatoPage, { id: id });
-    modal.onDidDismiss(() => {
-      this.getAllContatos();
-    });
-    modal.present();
-  }
 
     //Perform preliminary processing configurations
     preProcessConfigurations() {
