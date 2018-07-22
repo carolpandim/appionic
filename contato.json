@@ -38,7 +38,7 @@
     {
       "id": 6,
       "nome": "Wagner",
-      "telefone": "1234567",
+      "telefone": "1234568",
       "empresa": "Einstein",
       "img": "../assets/imgs/wagner.jpg"
     }
@@ -48,13 +48,13 @@
       "id": 1,
       "nome": "Meia Lupo",
       "descricao": "Meia cano curto feminina branca.",
-      "img": "../assets/imgs/carol.jpg"
+      "img": "../assets/imgs/meia.jpg"
     },
     {
       "id": 2,
       "nome": "Calça Lycra Lupo",
-      "descricao": "Calça de lycra preta feminina",
-      "img": "../assets/imgs/carol.jpg"
+      "descricao": "Calça de lycra preta",
+      "img": "../assets/imgs/calca.jpg"
     }
   ]
 }

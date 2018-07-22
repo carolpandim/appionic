@@ -4,7 +4,6 @@ export class Contato {
         public nome: String,
         public telefone: String,
         public empresa: String,
-        public img: String,
-
+        public img: String
     ) { }
 }

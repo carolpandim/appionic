@@ -9,6 +9,10 @@ import { ProdutoPage } from '../pages/produto/produto'
 import { ModalContatoPage } from '../pages/modalcontato/modalcontato'
 import { ModalCreateContatoPage } from '../pages/modalcreatecontato/modalcreatecontato'
 
+import { ModalProdutoPage } from '../pages/modalproduto/modalproduto'
+import { ModalCreateProdutoPage } from '../pages/modalcreateproduto/modalcreateproduto'
+
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RemoteServiceProvider } from '../providers/remote-service/remote-service';
@@ -21,9 +25,11 @@ import { ProdutoServiceProvider } from '../providers/produto-service/produto-ser
     MyApp,
     HomePage,
     ContatoPage,
-    ProdutoPage,
     ModalContatoPage,
-    ModalCreateContatoPage
+    ModalCreateContatoPage,
+    ProdutoPage,
+    ModalProdutoPage,
+    ModalCreateProdutoPage
   ],
   imports: [
     BrowserModule,
@@ -38,7 +44,10 @@ import { ProdutoServiceProvider } from '../providers/produto-service/produto-ser
     ContatoPage,
     ProdutoPage,
     ModalContatoPage,
-    ModalCreateContatoPage
+    ModalCreateContatoPage,
+    ModalProdutoPage,
+    ModalCreateProdutoPage
+
   ],
   providers: [
     StatusBar,

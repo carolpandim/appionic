@@ -19,7 +19,7 @@ export class ModalCreateContatoPage implements OnInit {
   requestProcessing = false;
   contatoIdToUpdate = null;
   processValidation = false;
-
+  
   //Create form
   contatoForm = new FormGroup({
     id: new FormControl(''),
@@ -37,6 +37,7 @@ export class ModalCreateContatoPage implements OnInit {
     public viewCtrl: ViewController
   ) {
     this.contatoId = navParams.get("id");
+
   }
 
   //Create ngOnInit() and and load contatos
@@ -122,6 +123,7 @@ export class ModalCreateContatoPage implements OnInit {
     this.statusCode = null;
     this.requestProcessing = true;
   }
+
   //Go back from update to create
   backToCreateContato() {
     this.contatoIdToUpdate = null;

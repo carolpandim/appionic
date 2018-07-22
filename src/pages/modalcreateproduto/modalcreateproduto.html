@@ -1,5 +1,4 @@
 <ion-header>
-
   <ion-navbar>
     <ion-buttons left>
       <button ion-button (click)="dismiss()">
@@ -7,55 +6,49 @@
         <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title *ngIf="contatoIdToUpdate!=0">
-      Atualizar Contato {{contatoIdToUpdate}}
+    <ion-title *ngIf="produtoIdToUpdate!=0">
+      Atualizar Produto {{produtoIdToUpdate}}
     </ion-title>
-    <ion-title *ngIf="contatoIdToUpdate==0">
-      <h3> Crear Novo Contato </h3>
+    <ion-title *ngIf="produtoIdToUpdate==0">
+      <h3> Crear Novo Produto </h3>
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-
 <ion-content>
-  <form [formGroup]="contatoForm" (ngSubmit)="onContatoFormSubmit()">
+  <form [formGroup]="produtoForm" (ngSubmit)="onProdutoFormSubmit()">
     <ion-item>
       <ion-label>Nome:</ion-label>
       <ion-input type="text" formControlName="nome"></ion-input>
-      <ion-label *ngIf="contatoForm.get('nome').invalid && processValidation" [ngClass]="'error'"> Nome é requerido. </ion-label>
+      <ion-label *ngIf="produtoForm.get('nome').invalid && processValidation" [ngClass]="'error'"> Nome é requerido. </ion-label>
     </ion-item>
     <ion-item>
-      <ion-label>Empresa</ion-label>
-      <ion-input type="text" formControlName="empresa"></ion-input>
-      <ion-label *ngIf="contatoForm.get('empresa').invalid && processValidation" [ngClass]="'error'"> Empresa é requerida. </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Telefone</ion-label>
-      <ion-input type="text" formControlName="telefone"></ion-input>
-      <ion-label *ngIf="contatoForm.get('telefone').invalid && processValidation" [ngClass]="'error'"> Telefone é requerido. </ion-label>
+      <ion-label>Descrição</ion-label>
+      <ion-input type="text" formControlName="descricao"></ion-input>
+      <ion-label *ngIf="produtoForm.get('descricao').invalid && processValidation" [ngClass]="'error'"> Descrição é requerida. </ion-label>
     </ion-item>
     <ion-item>
       <ion-label>Imagem</ion-label>
       <ion-input type="text" formControlName="img"></ion-input>
-      <ion-label *ngIf="contatoForm.get('img').invalid && processValidation" [ngClass]="'error'"> Imagem é requerida. </ion-label>
+      <ion-label *ngIf="produtoForm.get('img').invalid && processValidation" [ngClass]="'error'"> Imagem é requerida. </ion-label>
     </ion-item>
-    <button ion-button *ngIf="!contatoIdToUpdate">CREATE</button>
-    <button ion-button *ngIf="contatoIdToUpdate">UPDATE</button>
+    <button ion-button *ngIf="!produtoIdToUpdate">CREATE</button>
+    <button ion-button *ngIf="produtoIdToUpdate">UPDATE</button>
     <button ion-button (click)="dismiss()">Voltar</button>
     <br/>
     <br/>
     <div *ngIf="statusCode; else processing">
       <div *ngIf="statusCode === 201" [ngClass]="'success'">
-        Contato adicionado com sucesso.
+        Produto adicionado com sucesso.
       </div>
       <div *ngIf="statusCode === 409" [ngClass]="'success'">
-        Contato já existe.
+        Produto já existe.
       </div>
       <div *ngIf="statusCode === 200" [ngClass]="'success'">
-        Contato atualizado com sucesso.
+        Produto atualizado com sucesso.
       </div>
       <div *ngIf="statusCode === 204" [ngClass]="'success'">
-        Contato deletado com sucesso.
+        Produto deletado com sucesso.
       </div>
       <div *ngIf="statusCode === 500" [ngClass]="'error'">
         Internal Server Error.

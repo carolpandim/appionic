@@ -1,12 +1,10 @@
 import { NavController, NavParams, ModalController } from 'ionic-angular';
-
 import { Component, OnInit } from '@angular/core';
 import { ModalContatoPage } from '../modalcontato/modalcontato';
 import { ModalCreateContatoPage } from '../modalcreatecontato/modalcreatecontato';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 import { Contato } from '../../models/contato';
-import { AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-contato',
@@ -33,8 +31,7 @@ export class ContatoPage implements OnInit {
     private contatoService: RemoteServiceProvider,
     public navCtrl: NavController,
     public navParams: NavParams,
-    public modalCtrl: ModalController,
-    public alertCtrl: AlertController
+    public modalCtrl: ModalController
   ) {
   }
 
@@ -79,10 +76,9 @@ export class ContatoPage implements OnInit {
     });
     modal.present();
   }
-    //Perform preliminary processing configurations
-    preProcessConfigurations() {
-      this.statusCode = null;
-      this.requestProcessing = true;
-    }
-
+  //Perform preliminary processing configurations
+  preProcessConfigurations() {
+    this.statusCode = null;
+    this.requestProcessing = true;
+  }
 }
