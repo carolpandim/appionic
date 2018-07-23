@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ContatoPage } from '../pages/contato/contato';
 import { ProdutoPage } from '../pages/produto/produto';
 
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -15,7 +16,7 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{ title: string, component: any }>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
@@ -24,7 +25,7 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Clientes', component: ContatoPage },
-      { title: 'Produtos', component: ProdutoPage },
+      { title: 'Produtos', component: ProdutoPage }
     ];
 
   }

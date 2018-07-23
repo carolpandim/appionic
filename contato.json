@@ -56,5 +56,27 @@
       "descricao": "Calça de lycra preta",
       "img": "../assets/imgs/calca.jpg"
     }
+  ],
+  "contatoproduto": [
+    {
+      "id": 1,
+      "idcontato": 1,
+      "idproduto": 1
+    },
+    {
+      "id": 2,
+      "idcontato": 1,
+      "idproduto": 2
+    },
+    {
+      "id": 3,
+      "idcontato": 2,
+      "idproduto": 1
+    },
+    {
+      "id": 4,
+      "idcontato": 2,
+      "idproduto": 2
+    }
   ]
 }
