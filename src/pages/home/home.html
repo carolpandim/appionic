@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Confira alguns de nossos<br> produtos</ion-title>
+    <ion-title>Ofereça esses lançamentos!!</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -29,10 +29,11 @@
 
   <ion-list>
     <ion-item *ngFor="let item of allProdutos">
-      <h2>{{item.nome}}</h2>
-        <button ion-button clear (click)="navigateProduto(item.id)">
+
+        <button ion-button item-start clear (click)="navigateProduto(item.id)">          
           <img src="{{item.img}}">
         </button>
+        <h2>{{item.nome}}</h2>
         <p>{{item.descricao}}</p>
     </ion-item>  
   </ion-list>

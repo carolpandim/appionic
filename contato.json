@@ -55,6 +55,18 @@
       "nome": "Calça Lycra Lupo",
       "descricao": "Calça de lycra preta",
       "img": "../assets/imgs/calca.jpg"
+    },
+    {
+      "id": 3,
+      "nome": "Cueca Lupo",
+      "descricao": "Cueca de algodão cinza",
+      "img": "../assets/imgs/boxercueca.jpeg"
+    },
+    {
+      "id": 4,
+      "nome": "Cueca Confort Lupo",
+      "descricao": "Cueca de algodão branca",
+      "img": "../assets/imgs/boxer5.jpeg"
     }
   ],
   "contatoproduto": [
