@@ -1,8 +1,9 @@
-import { NavController, NavParams, ModalController,ViewController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, ViewController } from 'ionic-angular';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 import { Contato } from '../../models/contato';
+
 
 @Component({
   selector: 'page-modalcreatecontato',
@@ -13,12 +14,14 @@ export class ModalCreateContatoPage implements OnInit {
   public contatoId: any;
   public obg: any;
   public contato: Contato;
- 
+
   //Component properties
   statusCode: number;
   requestProcessing = false;
   contatoIdToUpdate = null;
   processValidation = false;
+  
+  filesToUpload: Array<File>;
 
   //Create form
   contatoForm = new FormGroup({
@@ -37,6 +40,7 @@ export class ModalCreateContatoPage implements OnInit {
     public viewCtrl: ViewController
   ) {
     this.contatoId = navParams.get("id");
+    this.filesToUpload = [];
   }
 
   //Create ngOnInit() and and load contatos
@@ -45,6 +49,39 @@ export class ModalCreateContatoPage implements OnInit {
     if (this.contatoId != 0) {
       this.loadContatoToEdit(this.contatoId);
     }
+  }
+
+  upload() {
+    this.makeFileRequest("http://localhost:3000/modalcreatecontato", [], this.filesToUpload).then((result) => {
+      console.log(result);
+    }, (error) => {
+      console.error(error);
+    });
+  }
+
+  fileChangeEvent(fileInput: any) {
+    this.filesToUpload = <Array<File>>fileInput.target.files;
+  }
+
+  makeFileRequest(url: string, params: Array<string>, files: Array<File>) {
+    return new Promise((resolve, reject) => {
+      var formData: any = new FormData();
+      var xhr = new XMLHttpRequest();
+      for (var i = 0; i < files.length; i++) {
+        formData.append("uploads[]", files[i], files[i].name);
+      }
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+          if (xhr.status == 200) {
+            resolve(JSON.parse(xhr.response));
+          } else {
+            reject(xhr.response);
+          }
+        }
+      }
+      xhr.open("POST", url, true);
+      xhr.send(formData);
+    });
   }
 
   //Load contato by id to edit
@@ -65,7 +102,7 @@ export class ModalCreateContatoPage implements OnInit {
         this.processValidation = true;
         this.requestProcessing = false;
       },
-      errorCode => this.statusCode = errorCode);
+        errorCode => this.statusCode = errorCode);
   }
 
   dismiss() {
@@ -128,4 +165,5 @@ export class ModalCreateContatoPage implements OnInit {
     this.contatoForm.reset();
     this.processValidation = false;
   }
+  
 }
