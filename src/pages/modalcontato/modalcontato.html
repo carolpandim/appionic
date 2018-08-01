@@ -20,6 +20,16 @@
       <p>{{contato.empresa}}</p>
       <p>{{contato.telefone}}</p>
     </ion-card-content>
+    <ion-content>
+      <ion-list *ngIf="produtos">
+        <ion-item *ngFor="let item of produtos">
+          <ion-avatar item-start>
+            <img src="{{item.img}}">
+          </ion-avatar>
+          <h2>{{item.nome}}</h2>
+          <p>{{item.descricao}}</p>
+        </ion-item>
+      </ion-list>
+    </ion-content>
   </ion-card>
-
 </ion-content>

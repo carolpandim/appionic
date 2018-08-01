@@ -38,9 +38,57 @@
     {
       "id": 6,
       "nome": "Wagner",
-      "telefone": "1234567",
+      "telefone": "1234568",
       "empresa": "Einstein",
       "img": "../assets/imgs/wagner.jpg"
+    }
+  ],
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Meia Lupo",
+      "descricao": "Meia cano curto feminina branca.",
+      "img": "../assets/imgs/meia.jpg"
+    },
+    {
+      "id": 2,
+      "nome": "Calça Lycra Lupo",
+      "descricao": "Calça de lycra preta",
+      "img": "../assets/imgs/calca.jpg"
+    },
+    {
+      "id": 3,
+      "nome": "Cueca Lupo",
+      "descricao": "Cueca de algodão cinza",
+      "img": "../assets/imgs/boxercueca.jpeg"
+    },
+    {
+      "id": 4,
+      "nome": "Cueca Confort Lupo",
+      "descricao": "Cueca de algodão branca",
+      "img": "../assets/imgs/boxer5.jpeg"
+    }
+  ],
+  "contatoproduto": [
+    {
+      "id": 1,
+      "idcontato": 1,
+      "idproduto": 1
+    },
+    {
+      "id": 2,
+      "idcontato": 1,
+      "idproduto": 2
+    },
+    {
+      "id": 3,
+      "idcontato": 2,
+      "idproduto": 1
+    },
+    {
+      "id": 4,
+      "idcontato": 2,
+      "idproduto": 2
     }
   ]
 }

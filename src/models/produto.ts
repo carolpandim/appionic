@@ -1,8 +1,8 @@
-export class Produto {
-    
+export class Produto {    
     constructor(
-        public Id: Number,
-        public Nome: String,
-        public Descricao?: String
+        public id: Number,
+        public nome: String,
+        public descricao: String,
+        public img: String
     ) { }
 }

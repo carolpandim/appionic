@@ -21,8 +21,11 @@ export class ModalCreateContatoPage implements OnInit {
   contatoIdToUpdate = null;
   processValidation = false;
   
+<<<<<<< HEAD
   filesToUpload: Array<File>;
 
+=======
+>>>>>>> 53ac6eca77c1868be1f7d5e8b71b53872b7a7c61
   //Create form
   contatoForm = new FormGroup({
     id: new FormControl(''),
@@ -40,7 +43,11 @@ export class ModalCreateContatoPage implements OnInit {
     public viewCtrl: ViewController
   ) {
     this.contatoId = navParams.get("id");
+<<<<<<< HEAD
     this.filesToUpload = [];
+=======
+
+>>>>>>> 53ac6eca77c1868be1f7d5e8b71b53872b7a7c61
   }
 
   //Create ngOnInit() and and load contatos
@@ -159,6 +166,7 @@ export class ModalCreateContatoPage implements OnInit {
     this.statusCode = null;
     this.requestProcessing = true;
   }
+
   //Go back from update to create
   backToCreateContato() {
     this.contatoIdToUpdate = null;

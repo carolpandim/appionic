@@ -1,13 +1,10 @@
 import { NavController, NavParams, ModalController } from 'ionic-angular';
-
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalContatoPage } from '../modalcontato/modalcontato';
-
+import { ModalCreateContatoPage } from '../modalcreatecontato/modalcreatecontato';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 import { Contato } from '../../models/contato';
-import { ModalCreateContatoPage } from "../modalcreatecontato/modalcreatecontato"
-import { AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-contato',
@@ -22,20 +19,19 @@ export class ContatoPage implements OnInit {
   contatoIdToUpdate = null;
   processValidation = false;
 
-  //Create form
   contatoForm = new FormGroup({
-    Nome: new FormControl('', Validators.required),
-    Telefone: new FormControl('', Validators.required),
-    Empresa: new FormControl('', Validators.required),
-    Img: new FormControl('', Validators.required)
+    id: new FormControl(''),
+    nome: new FormControl('', Validators.required),
+    telefone: new FormControl('', Validators.required),
+    empresa: new FormControl('', Validators.required),
+    img: new FormControl('', Validators.required)
   });
   //Create constructor to get service instance
   constructor(
     private contatoService: RemoteServiceProvider,
     public navCtrl: NavController,
     public navParams: NavParams,
-    public modalCtrl: ModalController,
-    public alertCtrl: AlertController
+    public modalCtrl: ModalController
   ) {
   }
 
@@ -80,11 +76,9 @@ export class ContatoPage implements OnInit {
     });
     modal.present();
   }
-
-    //Perform preliminary processing configurations
-    preProcessConfigurations() {
-      this.statusCode = null;
-      this.requestProcessing = true;
-    }
-
+  //Perform preliminary processing configurations
+  preProcessConfigurations() {
+    this.statusCode = null;
+    this.requestProcessing = true;
+  }
 }
